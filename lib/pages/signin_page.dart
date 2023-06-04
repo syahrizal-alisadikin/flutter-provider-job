@@ -104,6 +104,20 @@ class _SigninPageState extends State<SigninPage> {
                               : Color(0xffFD4F56),
                         ),
                       ),
+                      !isEmailValid
+                          ? SizedBox(
+                              height: 2,
+                            )
+                          : SizedBox(),
+                      !isEmailValid
+                          ? Text(
+                              "Email Tidak Valid",
+                              style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                color: Colors.red,
+                              ),
+                            )
+                          : SizedBox()
                     ],
                   ),
                   SizedBox(
