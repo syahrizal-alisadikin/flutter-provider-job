@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider_jobs/widgets/theme.dart';
 
 class CustomeFormField extends StatelessWidget {
@@ -6,16 +7,22 @@ class CustomeFormField extends StatelessWidget {
   final String title;
   final bool? obscureText;
   final bool? eye;
+  final bool isEmailValid;
   final bool iconData;
+  final TextEditingController? controller;
 
   final VoidCallback? onPressed;
+  final ValueChanged<String>? onChanged;
   const CustomeFormField({
     Key? key,
     this.hintText,
     required this.title,
     this.obscureText = false,
     this.eye = false,
+    this.isEmailValid = true,
+    this.controller,
     this.onPressed,
+    this.onChanged,
     this.iconData = true,
   }) : super(key: key);
 
@@ -33,6 +40,7 @@ class CustomeFormField extends StatelessWidget {
         ),
         TextFormField(
           obscureText: obscureText!,
+          onChanged: onChanged,
           decoration: InputDecoration(
             fillColor: Color(0xffF1F0F5),
             filled: true,
@@ -43,7 +51,7 @@ class CustomeFormField extends StatelessWidget {
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: Color(0xff4141A4),
+                color: isEmailValid ? Color(0xff4141A4) : Color(0xffFD4F56),
               ),
             ),
             hintText: hintText,
@@ -58,7 +66,24 @@ class CustomeFormField extends StatelessWidget {
                   )
                 : null,
           ),
+          style: TextStyle(
+            color: isEmailValid ? Color(0xff4141A4) : Color(0xffFD4F56),
+          ),
         ),
+        !isEmailValid
+            ? SizedBox(
+                height: 2,
+              )
+            : SizedBox(),
+        !isEmailValid
+            ? Text(
+                "Email Tidak Valid",
+                style: GoogleFonts.poppins(
+                  fontSize: 14,
+                  color: Colors.red,
+                ),
+              )
+            : SizedBox()
       ],
     );
   }

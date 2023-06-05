@@ -51,75 +51,103 @@ class _SigninPageState extends State<SigninPage> {
                   SizedBox(
                     height: 30,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Email",
-                        style: titleTextStyle,
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      TextFormField(
-                        controller: emailController,
-                        onChanged: (value) {
-                          if (value.length > 5) {
-                            bool isValid = EmailValidator.validate(value);
-                            if (isValid) {
-                              setState(() {
-                                isEmailValid = true;
-                              });
-                            } else {
-                              setState(() {
-                                isEmailValid = false;
-                              });
-                            }
-                          } else {
-                            setState(() {
-                              isEmailValid = true;
-                            });
-                          }
-                        },
-                        decoration: InputDecoration(
-                          fillColor: Color(0xffF1F0F5),
-                          filled: true,
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide.none,
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(
-                              color: isEmailValid
-                                  ? Color(0xff4141A4)
-                                  : Color(0xffFD4F56),
-                            ),
-                          ),
-                          hintText: "Masukan Email",
-                        ),
-                        style: TextStyle(
-                          color: isEmailValid
-                              ? Color(0xff4141A4)
-                              : Color(0xffFD4F56),
-                        ),
-                      ),
-                      !isEmailValid
-                          ? SizedBox(
-                              height: 2,
-                            )
-                          : SizedBox(),
-                      !isEmailValid
-                          ? Text(
-                              "Email Tidak Valid",
-                              style: GoogleFonts.poppins(
-                                fontSize: 14,
-                                color: Colors.red,
-                              ),
-                            )
-                          : SizedBox()
-                    ],
+                  // Column(
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   children: [
+                  //     Text(
+                  //       "Email",
+                  //       style: titleTextStyle,
+                  //     ),
+                  //     SizedBox(
+                  //       height: 8,
+                  //     ),
+                  //     TextFormField(
+                  //       controller: emailController,
+                  //       onChanged: (value) {
+                  //         if (value.length > 5) {
+                  //           bool isValid = EmailValidator.validate(value);
+                  //           if (isValid) {
+                  //             setState(() {
+                  //               isEmailValid = true;
+                  //             });
+                  //           } else {
+                  //             setState(() {
+                  //               isEmailValid = false;
+                  //             });
+                  //           }
+                  //         } else {
+                  //           setState(() {
+                  //             isEmailValid = true;
+                  //           });
+                  //         }
+                  //       },
+                  //       decoration: InputDecoration(
+                  //         fillColor: Color(0xffF1F0F5),
+                  //         filled: true,
+                  //         enabledBorder: OutlineInputBorder(
+                  //           borderRadius: BorderRadius.circular(12),
+                  //           borderSide: BorderSide.none,
+                  //         ),
+                  //         focusedBorder: OutlineInputBorder(
+                  //           borderRadius: BorderRadius.circular(12),
+                  //           borderSide: BorderSide(
+                  //             color: isEmailValid
+                  //                 ? Color(0xff4141A4)
+                  //                 : Color(0xffFD4F56),
+                  //           ),
+                  //         ),
+                  //         hintText: "Masukan Email",
+                  //       ),
+                  //       style: TextStyle(
+                  //         color: isEmailValid
+                  //             ? Color(0xff4141A4)
+                  //             : Color(0xffFD4F56),
+                  //       ),
+                  //     ),
+                  //     !isEmailValid
+                  //         ? SizedBox(
+                  //             height: 2,
+                  //           )
+                  //         : SizedBox(),
+                  //     !isEmailValid
+                  //         ? Text(
+                  //             "Email Tidak Valid",
+                  //             style: GoogleFonts.poppins(
+                  //               fontSize: 14,
+                  //               color: Colors.red,
+                  //             ),
+                  //           )
+                  //         : SizedBox()
+                  //   ],
+                  // ),
+                  CustomeFormField(
+                    controller: emailController,
+                    title: "Email",
+                    hintText: "Masukkan Email",
+                    eye: false,
+                    obscureText: false,
+                    iconData: false,
+                    isEmailValid: isEmailValid,
+                    onChanged: (value) {
+                      if (value.length > 5) {
+                        bool isValid = EmailValidator.validate(value);
+                        if (isValid) {
+                          setState(() {
+                            isEmailValid = true;
+                          });
+                        } else {
+                          setState(() {
+                            isEmailValid = false;
+                          });
+                        }
+                      } else {
+                        setState(() {
+                          isEmailValid = true;
+                        });
+                      }
+                    },
                   ),
+
                   SizedBox(
                     height: 20,
                   ),
